@@ -17,7 +17,9 @@ def read_inventory(file_path, host_group, host, var_patern):
                                 return ansible_host_ip[1]
                         break
                     line = file_object.readline()
-
+    else:
+        return 0
+    
 # example
 host_ip = read_inventory('inventory.ini', 'mongo', 'mongo_host_1', 'ansible_host')
 print(host_ip)
