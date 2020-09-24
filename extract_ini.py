@@ -13,8 +13,8 @@ def read_inventory(file_path, host_group, host, var_patern):
                         for index_list in host_var_list:
                             if var_patern in index_list:
                                 #print(index_list)
-                                ansible_host_ip = index_list.split('=')
-                                return ansible_host_ip[1]
+                                ansible_var = index_list.split('=')
+                                return ansible_var[1]
                         break
                     line = file_object.readline()
     else:
