@@ -1,10 +1,10 @@
 import configparser
 
-def read_inventory(file_path, host_group, host, var_patern):
+def read_inventory(file_path, host_group, var_patern):
     config = configparser.ConfigParser(allow_no_value=True)
     config.read(file_path)
     if host_group in config:
-        for key in config[host]:
+        for key in config[host_group]:
             with open(file_path, 'r') as file_object:
                 line = file_object.readline()
                 while line:
@@ -20,6 +20,8 @@ def read_inventory(file_path, host_group, host, var_patern):
     else:
         return 0
     
-# example
-host_ip = read_inventory('inventory.ini', 'mongo', 'mongo_host_1', 'ansible_host')
+# an example
+# extract only first host in the group
+# 1)path to file, 2)host group, 3)variable
+host_ip = read_inventory('inventory.ini', 'mongo', 'ansible_host')
 print(host_ip)
